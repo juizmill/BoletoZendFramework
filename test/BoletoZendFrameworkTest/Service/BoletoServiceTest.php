@@ -16,15 +16,22 @@ use Eduardokum\LaravelBoleto\Boleto\Banco\Sicredi;
 
 class BoletoServiceTest extends TestCase
 {
+    private $config = [
+        'boleto-zendframework' => [
+            'beneficiario' => [],
+            'dados-boleto' => []
+        ],
+    ];
+
     public function testVerificaSeImplementaInterfaceBoletoServiceInterface()
     {
-        $service = new BoletoService();
+        $service = new BoletoService($this->config);
         $this->assertInstanceOf(BoletoServiceInterface::class, $service);
     }
 
     public function testVerificaSeMetodosRetornaAPropriaClasse()
     {
-        $service = new BoletoService();
+        $service = new BoletoService($this->config);
 
         $this->assertInstanceOf(BoletoService::class, $service->setDadosPagador([]));
         $this->assertInstanceOf(BoletoService::class, $service->setDadosBeneficiario([]));
@@ -37,7 +44,7 @@ class BoletoServiceTest extends TestCase
      */
     public function testVerificaSeRetornaExceptionCasoBoletoNaoExista()
     {
-        $service = new BoletoService();
+        $service = new BoletoService($this->config);
         $service->getBoleto('XPTO');
     }
 
@@ -60,7 +67,7 @@ class BoletoServiceTest extends TestCase
      */
     public function testVerificaSeMetodoGetBoletoRetornaInstanciaDeBoleto($boleto, $instancia)
     {
-        $service = new BoletoService();
+        $service = new BoletoService($this->config);
         $this->assertInstanceOf($instancia, $service->getBoleto($boleto));
     }
 
@@ -78,7 +85,7 @@ class BoletoServiceTest extends TestCase
             'endereco2' => '99999-999 - CIDADE - UF' //este valor gera automático
         ];
 
-        $service = new BoletoService();
+        $service = new BoletoService($this->config);
         $service->setDadosPagador($pagador);
         $boleto = $service->getBoleto(BoletoServiceInterface::CAIXA);
 
@@ -101,7 +108,7 @@ class BoletoServiceTest extends TestCase
             'endereco2' => '99999-999 - CIDADE - UF' //este valor gera automático
         ];
 
-        $service = new BoletoService();
+        $service = new BoletoService($this->config);
         $service->setDadosBeneficiario($beneficiario);
         $boleto = $service->getBoleto(BoletoServiceInterface::CAIXA);
 

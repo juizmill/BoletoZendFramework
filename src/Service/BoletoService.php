@@ -15,6 +15,10 @@ class BoletoService implements BoletoServiceInterface
 
     public function __construct(array $config = [])
     {
+        if (!isset($config['boleto-zendframework'])) {
+            throw new BoletoZendFrameworkException('Configuração não encontrada.');
+        }
+
         $this->config = $config;
     }
 
@@ -38,6 +42,11 @@ class BoletoService implements BoletoServiceInterface
 
     public function getBoleto($boleto = self::CAIXA) : Boleto
     {
+        $class = '\\Eduardokum\\LaravelBoleto\\Boleto\\Banco\\'.$boleto;
+        if (!class_exists($class)) {
+            throw new BoletoZendFrameworkException('Boleto não encontrado.');
+        }
+
         $dadosBeneficiario = array_merge(
             $this->config['boleto-zendframework']['beneficiario'],
             $this->dadosBeneficiario
@@ -55,11 +64,6 @@ class BoletoService implements BoletoServiceInterface
             'pagador' => $pagador,
             'beneficiario' => $beneficiario,
         ]);
-
-        $class = '\\Eduardokum\\LaravelBoleto\\Boleto\\Banco\\'.$boleto;
-        if (!class_exists($class)) {
-            throw new BoletoZendFrameworkException('Boleto não encontrado.');
-        }
 
         return new $class($dados);
     }
