@@ -14,7 +14,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": ">=5.5.0",
+    "php": ">=5.6.0",
     "eduardokum/laravel-boleto": "^0.5.0",
     "zendframework/zend-loader": "^2.5",
     "zendframework/zend-modulemanager": "^2.8",
@@ -27,7 +27,7 @@
     "phpmd/phpmd": "^2.6",
     "squizlabs/php_codesniffer": "^3.0",
     "codeclimate/php-test-reporter": "^0.4.4",
-    "phpunit/phpunit": "^6.2"
+    "phpunit/phpunit": "5.7.21"
   },
   "autoload": {
     "psr-4": {
