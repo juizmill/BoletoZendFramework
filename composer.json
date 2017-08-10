@@ -1,5 +1,5 @@
 {
-  "name": "juizmill/boletp-zend-framework",
+  "name": "juizmill/boleto-zend-framework",
   "type": "library",
   "description": "Modulo Zend Framework para boletos",
   "keywords": ["pdf","boleto", "zf"],
