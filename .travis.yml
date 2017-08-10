@@ -15,7 +15,7 @@ addons:
     repo_token: "173d07701fb6740011c89fcaaef23e5199867bdd0adcc24b45089401ce2d18a2"
 
 script:
-  - vendor/bin/phpcs --standard=PSR2 src && vendor/bin/phpcs --standard=PSR2 config && vendor/bin/phpcs --standard=PSR2 test && vendor/bin/phpunit test -v -c test/phpunit.xml && vendor/bin/phpmd config,src,test text cleancode,codesize,controversial,design,naming,unusedcode
+  - vendor/bin/phpcs --standard=PSR2 src && vendor/bin/phpcs --standard=PSR2 config && vendor/bin/phpcs --standard=PSR2 test && vendor/bin/phpunit test -v -c test/phpunit.xml && vendor/bin/phpmd config,src,test text cleancode,codesize,controversial,design,naming,unusedcode && phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
   - vendor/bin/test-reporter

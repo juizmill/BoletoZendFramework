@@ -1,6 +1,6 @@
 # BoletoZendFramework
 
-[![Packagist](https://img.shields.io/packagist/v/juizmill/boleto-zend-framework.svg?style=flat-square)](https://github.com/juizmill/BoletoZendFramework)
+[![Packagist](https://img.shields.io/packagist/dt/juizmill/boleto-zend-framework.svg?style=flat-square)](https://github.com/juizmill/BoletoZendFramework)
 [![Build Status](https://travis-ci.org/juizmill/BoletoZendFramework.svg?branch=master)](https://travis-ci.org/juizmill/BoletoZendFramework)
 [![Packagist](https://img.shields.io/packagist/l/juizmill/boleto-zend-framework.svg?style=flat-square)](https://github.com/juizmill/BoletoZendFramework)
 [![Code Climate](https://codeclimate.com/github/juizmill/BoletoZendFramework/badges/gpa.svg)](https://codeclimate.com/github/juizmill/BoletoZendFramework)
