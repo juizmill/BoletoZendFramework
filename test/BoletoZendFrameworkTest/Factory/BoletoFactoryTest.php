@@ -25,22 +25,16 @@ class BoletoFactoryTest extends TestCase
      */
     public function testVerificaSeRetornaExceptionCasoBoletoNaoExista()
     {
+        $serviceManager = $this->getServiceManager();
         $boletoFactory = new BoletoFactory();
-        $boletoFactory->__invoke($this->getServiceManager(), '');
+
+        $boletoFactory->__invoke($serviceManager, '');
     }
 
     public function testVerificaSeMetodoInvokeRetornaInstanciaDeBoletoService()
     {
         $boletoFactory = new BoletoFactory();
         $this->assertInstanceOf(BoletoService::class, $boletoFactory->__invoke($this->serviceManager(), ''));
-    }
-
-    public function testVerificaSeMetodosRetornaAPropriaClasse()
-    {
-        $boletoFactory = new BoletoFactory();
-
-        $this->assertInstanceOf(BoletoFactory::class, $boletoFactory->setDadosPagador([]));
-        $this->assertInstanceOf(BoletoFactory::class, $boletoFactory->setDadosBoleto([]));
     }
 
     public function testVerificaSeMetodoInvokeRetornaOsDadosEsperados()
@@ -64,11 +58,13 @@ class BoletoFactoryTest extends TestCase
         ];
 
         $boletoFactory = new BoletoFactory();
-        $boletoFactory->setDadosPagador($pagador);
-        $boletoFactory->setDadosBoleto($dadosBoleto);
 
         $boletoService = $boletoFactory->__invoke($this->serviceManager(), '');
+        $boletoService->setDadosPagador($pagador);
+        $boletoService->setDadosBoleto($dadosBoleto);
+
         $boleto = $boletoService->getBoleto(BoletoServiceInterface::CAIXA);
+
         $data = $boleto->toArray();
 
         $this->assertEquals('100,00', $data['valor']);

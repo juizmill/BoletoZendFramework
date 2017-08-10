@@ -12,7 +12,7 @@ trait ServiceManager
         $serviceManager = $this->getServiceManager();
         $serviceManager->setAllowOverride(true);
         $serviceManager->setService('config', $this->updateConfigServiceManager($serviceManager->get('config')));
-        $serviceManager->setAllowOverride(true);
+        $serviceManager->setAllowOverride(false);
 
         return $serviceManager;
     }

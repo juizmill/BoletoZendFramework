@@ -9,9 +9,6 @@ use BoletoZendFramework\Exception\BoletoZendFrameworkException;
 
 class BoletoFactory implements FactoryInterface
 {
-    protected $dadosBoleto = [];
-    protected $dadosPagador = [];
-
     /**
      * {@inheritdoc}
      */
@@ -22,26 +19,6 @@ class BoletoFactory implements FactoryInterface
             throw new BoletoZendFrameworkException('Configuração não encontrada.');
         }
 
-        $boletoService = new BoletoService();
-        $boletoService->setDadosPagador($this->dadosPagador)
-            ->setDadosBeneficiario($config['boleto-zendframework']['beneficiario'])
-            ->setDadosBoleto(array_merge(
-                $config['boleto-zendframework']['dados-boleto'],
-                $this->dadosBoleto
-            ));
-
-        return $boletoService;
-    }
-
-    public function setDadosPagador(array $dados)
-    {
-        $this->dadosPagador = $dados;
-        return $this;
-    }
-
-    public function setDadosBoleto(array $dados)
-    {
-        $this->dadosBoleto = $dados;
-        return $this;
+        return new BoletoService($config);
     }
 }

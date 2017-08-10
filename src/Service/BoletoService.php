@@ -8,9 +8,15 @@ use BoletoZendFramework\Exception\BoletoZendFrameworkException;
 
 class BoletoService implements BoletoServiceInterface
 {
+    protected $config = [];
+    protected $dadosBoleto = [];
     protected $dadosPagador = [];
     protected $dadosBeneficiario = [];
-    protected $dadosBoleto = [];
+
+    public function __construct(array $config = [])
+    {
+        $this->config = $config;
+    }
 
     public function setDadosPagador(array $dados)
     {
@@ -32,10 +38,20 @@ class BoletoService implements BoletoServiceInterface
 
     public function getBoleto($boleto = self::CAIXA) : Boleto
     {
-        $beneficiario = new Pessoa($this->dadosBeneficiario);
+        $dadosBeneficiario = array_merge(
+            $this->config['boleto-zendframework']['beneficiario'],
+            $this->dadosBeneficiario
+        );
+
+        $beneficiario = new Pessoa($dadosBeneficiario);
         $pagador = new Pessoa($this->dadosPagador);
 
-        $dados = array_merge($this->dadosBoleto, [
+        $dadosBoleto = array_merge(
+            $this->config['boleto-zendframework']['dados-boleto'],
+            $this->dadosBoleto
+        );
+
+        $dados = array_merge($dadosBoleto, [
             'pagador' => $pagador,
             'beneficiario' => $beneficiario,
         ]);
