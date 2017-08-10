@@ -5,6 +5,7 @@
 [![Packagist](https://img.shields.io/packagist/l/juizmill/boleto-zend-framework.svg?style=flat-square)](https://github.com/juizmill/BoletoZendFramework)
 [![Code Climate](https://codeclimate.com/github/juizmill/BoletoZendFramework/badges/gpa.svg)](https://codeclimate.com/github/juizmill/BoletoZendFramework)
 [![Test Coverage](https://codeclimate.com/github/juizmill/BoletoZendFramework/badges/coverage.svg)](https://codeclimate.com/github/juizmill/BoletoZendFramework/coverage)
+[![Issue Count](https://codeclimate.com/github/juizmill/BoletoZendFramework/badges/issue_count.svg)](https://codeclimate.com/github/juizmill/BoletoZendFramework)
 
 Modulo Zend Framework para boletos
 
