@@ -12,7 +12,7 @@ before_script:
 
 addons:
   code_climate:
-    repo_token: "173d07701fb6740011c89fcaaef23e5199867bdd0adcc24b45089401ce2d18a2"
+    repo_token: $CODECLIMATE_REPO_TOKEN
 
 script:
   - vendor/bin/phpcs --standard=PSR2 src
