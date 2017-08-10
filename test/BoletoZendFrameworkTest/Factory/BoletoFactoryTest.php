@@ -13,7 +13,7 @@ class BoletoFactoryTest extends TestCase
 {
     use ServiceManager;
 
-    public function test_verifica_se_implementa_FactoryInterface_do_Zend()
+    public function testVerificaSeImplementaFactoryInterfaceDoZend()
     {
         $boletoFactory = new BoletoFactory();
         $this->assertInstanceOf(FactoryInterface::class, $boletoFactory);
@@ -23,19 +23,19 @@ class BoletoFactoryTest extends TestCase
      * @expectedException \BoletoZendFramework\Exception\BoletoZendFrameworkException
      * @expectedExceptionMessage Configuração não encontrada.
      */
-    public function test_verifica_se_retorna_exception_caso_boleto_nao_exista()
+    public function testVerificaSeRetornaExceptionCasoBoletoNaoExista()
     {
         $boletoFactory = new BoletoFactory();
         $boletoFactory->__invoke($this->getServiceManager(), '');
     }
 
-    public function test_verifica_se_metodo_invoke_retorna_instancia_de_BoletoService()
+    public function testVerificaSeMetodoInvokeRetornaInstanciaDeBoletoService()
     {
         $boletoFactory = new BoletoFactory();
         $this->assertInstanceOf(BoletoService::class, $boletoFactory->__invoke($this->serviceManager(), ''));
     }
 
-    public function test_verifica_se_metodos_retorna_a_propria_classe()
+    public function testVerificaSeMetodosRetornaAPropriaClasse()
     {
         $boletoFactory = new BoletoFactory();
 
@@ -43,7 +43,7 @@ class BoletoFactoryTest extends TestCase
         $this->assertInstanceOf(BoletoFactory::class, $boletoFactory->setDadosBoleto([]));
     }
 
-    public function test_verifica_se_metodo_invoke_retorna_os_dados_esperados()
+    public function testVerificaSeMetodoInvokeRetornaOsDadosEsperados()
     {
         $pagador = [
             'nome' => 'Cliente',

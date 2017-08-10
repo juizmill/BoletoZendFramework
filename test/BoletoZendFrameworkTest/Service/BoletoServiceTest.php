@@ -16,13 +16,13 @@ use Eduardokum\LaravelBoleto\Boleto\Banco\Sicredi;
 
 class BoletoServiceTest extends TestCase
 {
-    public function test_verifica_se_implementa_interface_BoletoServiceInterface()
+    public function testVerificaSeImplementaInterfaceBoletoServiceInterface()
     {
         $service = new BoletoService();
         $this->assertInstanceOf(BoletoServiceInterface::class, $service);
     }
 
-    public function test_verifica_se_metodos_retorna_a_propria_classe()
+    public function testVerificaSeMetodosRetornaAPropriaClasse()
     {
         $service = new BoletoService();
 
@@ -35,7 +35,7 @@ class BoletoServiceTest extends TestCase
      * @expectedException \BoletoZendFramework\Exception\BoletoZendFrameworkException
      * @expectedExceptionMessage Boleto não encontrado.
      */
-    public function test_verifica_se_retorna_exception_caso_boleto_nao_exista()
+    public function testVerificaSeRetornaExceptionCasoBoletoNaoExista()
     {
         $service = new BoletoService();
         $service->getBoleto('XPTO');
@@ -58,13 +58,13 @@ class BoletoServiceTest extends TestCase
     /**
      * @dataProvider dataProvider
      */
-    public function test_verifica_se_metodo_getBoleto_retorna_instancia_de_boleto($boleto, $instancia)
+    public function testVerificaSeMetodoGetBoletoRetornaInstanciaDeBoleto($boleto, $instancia)
     {
         $service = new BoletoService();
         $this->assertInstanceOf($instancia, $service->getBoleto($boleto));
     }
 
-    public function test_verifica_se_adiciona_o_pagador()
+    public function testVerificaSeAdicionaOPagador()
     {
         $pagador = [
             'nome' => 'Cliente',
@@ -87,7 +87,7 @@ class BoletoServiceTest extends TestCase
         $this->assertEquals($pagador, $boletoPagador);
     }
 
-    public function test_verifica_se_adiciona_o_beneficiario()
+    public function testVerificaSeAdicionaOBeneficiario()
     {
         $beneficiario = [
             'nome' => 'ACME',
