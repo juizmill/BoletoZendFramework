@@ -59,7 +59,7 @@ No controller você pode fazer algo deste tipo sendo que `$this->boletoService` 
     }
 ```
 
-Caso prefira usar a estratégia, basta adicionar no `module.config.php` 
+Caso prefira usar a estratégia, basta adicionar no `module.config.php`
 
 ```
     'view_manager' => [
@@ -69,12 +69,12 @@ Caso prefira usar a estratégia, basta adicionar no `module.config.php`
     ]
 ```
 
-No controller você faz desta forma: 
+No controller você faz desta forma:
 
 ```
         $boleto = $this->boletoService->setDadosBoleto($dadosBoleto)
             ->setDadosPagador($pagador)
             ->getBoleto(BoletoServiceInterface::CAIXA);
 
-        return new PdfModel(['data' => $boleto], ['name' => 'Nome do boleto para donwload']);
+        return new BoletoPdfModel(['data' => $boleto], ['name' => 'Nome do boleto para donwload']);
 ```
