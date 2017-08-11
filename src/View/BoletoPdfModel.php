@@ -15,7 +15,9 @@ class BoletoPdfModel extends ViewModel
     {
         $data = $this->getVariable('data');
         if (!$data instanceof Boleto) {
-            throw new Exception\InvalidArgumentException('Variavel "data" não encontrada ou não é instância de Boleto.');
+            throw new Exception\InvalidArgumentException(
+                'Variavel "data" não encontrada ou não é instância de Boleto.'
+            );
         }
 
         return [
